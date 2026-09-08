@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โครงการ PEA LED เพื่อแหล่งท่องเที่ยวเชิงวัฒนธรรมไทย</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;600;700;900&family=Sarabun:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="eyebrow">PEA · การไฟฟ้าส่วนภูมิภาค</div>
+        <h1 class="hero-title">โครงการ LED เพื่อ<em>แหล่งท่องเที่ยว</em><br>เชิงวัฒนธรรมไทย</h1>
+        <p class="hero-sub">สรุปผลการดำเนินโครงการเปลี่ยนหลอดไฟส่องสว่างเป็น LED ณ วัด โบราณสถาน และแหล่งท่องเที่ยวเชิงวัฒนธรรมทั่วประเทศ ตั้งแต่ปี 2556–2568</p>
+        <div class="hero-number" id="heroKwh">822,646.70</div>
+        <div class="hero-number-label">กิโลวัตต์ชั่วโมงที่ประหยัดได้ต่อปี (kWh/ปี)</div>
+        <div class="tier-divider" style="margin-top:40px;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </header>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-val" id="statSites">77</div>
+            <div class="stat-label">สถานที่ในโครงการทั้งหมด</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val teal">3,328,008.30</div>
+            <div class="stat-label">บาท/ปี · ค่าไฟฟ้าที่ประหยัดได้ต่อปี</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val">490.23</div>
+            <div class="stat-label">tCO₂eq/ปี · การลดการปล่อยคาร์บอน</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-val" id="statYears">2556–2568</div>
+            <div class="stat-label">ช่วงปีที่ดำเนินโครงการ</div>
+        </div>
+    </div>
+
+    <main>
+
+        <section id="chart-section">
+            <div class="section-head">
+                <h2>ผลประหยัดพลังงานไฟฟ้ารายปี</h2>
+                <span class="section-note">รวมหน่วยไฟฟ้าลดลง (kWh/ปี) ของสถานที่ที่มีข้อมูลคำนวณ แยกตามปีที่โครงการแล้วเสร็จ</span>
+            </div>
+            <div class="chart-wrap">
+                <div class="bars" id="barsChart"></div>
+            </div>
+        </section>
+
+        <section id="table-section">
+            <div class="section-head">
+                <h2>รายชื่อสถานที่ในโครงการ</h2>
+                <span class="section-note" id="rowCount"></span>
+            </div>
+
+            <div class="controls">
+                <input type="text" id="searchBox" placeholder="ค้นหาชื่อสถานที่ / จังหวัด...">
+                <select id="regionFilter">
+        <option value="">ทุกภาค</option>
+        <option value="กฟน">ภาคเหนือ (กฟน.)</option>
+        <option value="กฟฉ">ภาคตะวันออกเฉียงเหนือ (กฟฉ.)</option>
+        <option value="กฟก">ภาคกลาง (กฟก.)</option>
+        <option value="กฟต">ภาคใต้ (กฟต.)</option>
+      </select>
+                <select id="yearFilter">
+        <option value="">ทุกปี</option>
+      </select>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-key="id">ลำดับ</th>
+                            <th data-key="site">สถานที่</th>
+                            <th data-key="pea">กฟข.</th>
+                            <th class="num" data-key="kwh">kWh ลดลง/ปี</th>
+                            <th class="num" data-key="baht">บาท/ปี</th>
+                            <th class="num" data-key="co2">CO₂ (tCO2eq/ปี)</th>
+                            <th data-key="year">ปีโครงการ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div>ข้อมูลจากเอกสารสรุปผลการดำเนินโครงการ PEA LED เพื่อแหล่งท่องเที่ยวเชิงวัฒนธรรมไทย · อัตราค่าไฟฟ้าอ้างอิง 4.00 บาท/หน่วย · ค่าสัมประสิทธิ์การปล่อยก๊าซเรือนกระจก (EF) 0.4999 kgCO₂eq/kWh</div>
+        <div class="legend">
+            <span>* = โครงการนำร่องระยะแรก (ปี 2556)</span>
+            <span>— = ยังไม่มีข้อมูลคำนวณ</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
